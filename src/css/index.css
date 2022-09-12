@@ -14,12 +14,12 @@ header {
   height: 25vh;
   position: relative;
   z-index: 2;
-  background-image: url(../../public/images/bg-header-desktop.svg);
+  background-image: url(../images/bg-header-desktop.svg);
   background-color: hsl(180deg, 29%, 50%);
 }
 @media screen and (max-width: 640px) {
   header {
-    background-image: url(../../public/images/bg-header-mobile.svg);
+    background-image: url(../images/bg-header-mobile.svg);
     background-size: cover;
   }
 }
