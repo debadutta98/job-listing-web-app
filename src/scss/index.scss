@@ -12,14 +12,15 @@ body {
 }
 
 header {
-    height: 25vh;
+    height: 10rem;
     position: relative;
     z-index: 2;
     background-image: url(../images/bg-header-desktop.svg);
     background-color: $header-bg-color;
+    background-repeat: no-repeat;
+    background-size: cover;
     @media screen and (max-width: 640px) {
         background-image: url(../images/bg-header-mobile.svg);
-        background-size: cover;
     }
 }
 
@@ -28,6 +29,7 @@ header {
     position: relative;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 3rem;
     gap: 2rem;
     z-index: 5;
     &__job-filter
