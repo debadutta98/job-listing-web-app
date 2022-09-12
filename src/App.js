@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useMemo, useState } from "react";
+import JobCard from "./Components/JobCard";
+import JobFilter from "./Components/JobFilter";
+import jobs from "./data";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const [filter, setFilter] = useState([]);
+  const onRemoveFilter = (filterName) => {
+    setFilter((prevState) => {
+      return prevState.filter((val) => val !== filterName);
+    });
+  };
+  const onAddFilter = (filterName) => {
+    if (!filter.includes(filterName)) {
+      setFilter((prevState) => {
+        return [...prevState, filterName];
+      });
+    }
+  };
+  const removeAllFilter = () => {
+    setFilter([]);
+  }
+  const filteredJobs = useMemo(() => {
+    if (filter.length === 0) {
+      return jobs;
+    } else {
+      return jobs.filter((job) => (
+        filter.every((lang) => (
+          job.languages.includes(lang)
+        ))
+      ));
+    }
+  }, [filter]);
+  return (<>
+    <header />
+    <div className="flex-container" style={{ paddingTop: filter.length >0?"0rem":"3rem"}}>
+      {filter.length > 0 && <JobFilter onRemoveFilter={onRemoveFilter} removeAllFilter={removeAllFilter} filters={filter} />}
+      {
+        filteredJobs.map((job) => {
+          return <JobCard key={job.id} details={job} onAddFilter={onAddFilter} />;
+        })
+      }
     </div>
+  </>
   );
 }
 

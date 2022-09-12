@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+$light-grayish-cyan-background:hsl(180, 52%, 96%);
+$light-grayish-cyan-filter:hsl(180, 31%, 95%);
+$dark-grayish-cyan:hsl(180, 8%, 52%);
+$very-dark-grayish:hsl(180, 14%, 20%);
+$header-bg-color:hsl(180, 29%, 50%);
+$fontFamily:League Spartan;
+
+@mixin makeit ($width){
+    @media screen and  (max-width:$width){
+        @content;
+    }
+};
